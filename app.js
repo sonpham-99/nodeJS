@@ -5,6 +5,6 @@ var server = require("http").createServer(app);
 server.listen(9999);
 
 app.get("/", function(req, res){
-   res.send("<font color = red>Dùng Express thành công</font>");
+   res.send("<font color = red>Dùng Express thành công! Chúc mừng bạn</font>");
 //    console.log('Server đang chạy trong: ' + server.address().port) lấy địa chỉ server
 });
