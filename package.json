@@ -1,0 +1,9 @@
+{
+    "name": "SERVER",
+    "version": "0.0.1",
+    "private": "true",
+    "dependencies": {
+        "express": "*",
+        "nunjucks": "^3.2.2"
+    }
+}
