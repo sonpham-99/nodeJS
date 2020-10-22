@@ -1,0 +1,90 @@
+/*css header*/
+header{
+    position: relative;
+}
+header img {
+    width: 260px;
+    height: 150px;
+    margin-right: 100px;
+    margin-left: 45px;
+}
+.beauty-shop{
+    position: relative;
+    top: 30px;
+    bottom: 10px;
+    font-variant: small-caps;
+}
+.beauty-shop>h1{
+    font-size: 50px;
+    color: pink;
+    padding-bottom: 0px;
+    border-bottom: 3px dotted deeppink;
+    overflow: hidden;
+}
+.beauty-shop>h4{
+    color: hotpink;
+}
+/*css content*/
+
+.display{
+    display:inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid gold;
+    border-radius: 14px;
+    width: 180px;
+    height: 300px;
+}
+.display:hover{
+    color: deeppink;
+}
+.display img{
+    height: 180px;
+    width: 150px;
+    position: static;
+}
+/*css navbar*/
+.navbar-custom{
+    background-color: pink;
+}
+.nav.navbar-nav li a{
+    font-size: 20px;
+    padding-right: 12px;
+    color:white;
+}
+.nav.navbar-nav :hover{
+    color: deeppink;
+}
+.dropdown a{
+    color: white;
+    font-size: 20px;
+}
+.dropdown-item{
+    color: pink !important;
+}
+.dropdown-item:hover{
+    background-color: deeppink;
+    color: white  !important;
+}
+.navbar-nav.ml-auto li a{
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+}
+/*css footer*/
+footer{
+    position: relative;
+    min-height: 20px;
+    height: 80px;
+    width: 100%;
+    background-color: pink;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    bottom: 0;
+    padding: 8px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
