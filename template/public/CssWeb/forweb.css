@@ -1,0 +1,116 @@
+@media screen and (max-width: 600px) {
+  .h1{
+      color: red;
+  }
+}
+html,
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+    width:100%;
+}
+.row{
+    height: 100%;
+}
+.container-fluid{
+    min-height: 100%;
+    position: relative;
+}
+/*css header*/
+header{
+    position: relative;
+}
+header img {
+    width: 260px;
+    height: 150px;
+    margin-right: 100px;
+    margin-left: 45px;
+}
+.beauty-shop{
+    position: relative;
+    top: 30px;
+    bottom: 10px;
+    font-variant: small-caps;
+}
+.beauty-shop>h1{
+    font-size: 50px;
+    color: pink;
+    padding-bottom: 0px;
+    border-bottom: 3px dotted deeppink;
+    overflow: hidden;
+}
+.beauty-shop>h4{
+    color: hotpink;
+    padding-bottom: 25px;
+}
+/*css content*/
+
+.display{
+    display:inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 5px;
+    margin: 15px;
+    width: 180px;
+}
+.name{
+    font-size: 18px;
+    text-align: center;
+    padding: 0px 25px;
+    font-weight: bold;
+}
+.name a{
+    color: black;
+}
+.name a:hover{
+    color: deeppink;
+}
+.display img{
+    width:200px;
+	height:220px;
+    padding:0px;
+}
+.price{
+    font-size: 18px;
+}
+/*css navbar*/
+.navbar-custom{
+    background-color: deeppink;
+    padding: 15px;
+}
+.nav.navbar-nav li a{
+    font-size: 20px;
+    padding-right: 12px;
+    color:white;
+}
+.nav.navbar-nav :hover{
+    color: white;
+}
+.dropdown a{
+    color: white;
+    font-size: 20px;
+}
+.dropdown-item{
+    color: deeppink!important;
+}
+.dropdown-item:hover{
+    background-color: deeppink !important;
+    color: white  !important;
+}
+.navbar-nav.ml-auto li a{
+    color: white;
+    padding: 5px;
+    font-size: 20px;
+}
+/*css footer*/
+.footer{
+    width:100%;
+    min-height: 80px;
+    padding: 8px;
+    background-color: deeppink;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+    margin-top: 10px;
+}
