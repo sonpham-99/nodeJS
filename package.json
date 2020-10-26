@@ -4,6 +4,8 @@
     "private": "true",
     "dependencies": {
         "express": "*",
+        "mongodb": "^3.6.2",
+        "mongoose": "^5.10.10",
         "nunjucks": "^3.2.2"
     }
 }
