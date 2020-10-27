@@ -1,61 +1,88 @@
-//const mongoose = require("mongoose");
-//const express = require("express");
-//const app = express();
-//const employees = require("./mongo/model");
-//const router = express.Router();
-//const port = 4000;
-//
-//var uri = "mongodb://localhost:27017/kennel";
-//
-//mongoose.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
-//
-//const connection = mongoose.connection;
-//
-//connection.once("open", function() {
-//  console.log("MongoDB database connection established successfully");
-//});
-//
-////app.use("/", router);
-//app.get( '/views/homepage.html', function( req, res ) {
-//    return res.render( 'homepage.html') ;
-//    } ) ;
-//app.set('view engine', 'nunjucks');
-//
-//app.listen(port, function() {
-//  console.log("Server is running on Port: " + port);
-//});
+var express = require ('express');
+var nunjucks  = require('nunjucks');
+var bodyParser = require('body-parser');
+const { error } = require('console');
+const MongoClient = require('mongodb').MongoClient
 
-var mongoose = require('mongoose');
- 
-// make a connection
-mongoose.connect('mongodb://localhost:27017/tutorialkart');
- 
-// get reference to database
-var db = mongoose.connection;
- 
-db.on('error', console.error.bind(console, 'connection error:'));
- 
-db.once('open', function() {
-    console.log("Connection Successful!");
-    
-    // define Schema
-    var BookSchema = mongoose.Schema({
-      name: String,
-      price: Number,
-      quantity: Number
-    });
- 
-    // compile schema to model
-    var Book = mongoose.model('Book', BookSchema, 'bookstore');
- 
-    // a document instance
-    var book1 = new Book({ name: 'Introduction to Mongoose', price: 10, quantity: 25 });
- 
-    // save model to database
-    book1.save(function (err, book) {
-      if (err) return console.error(err);
-      console.log(book.name + " saved to bookstore collection.");
-    });
-    
+var app = express();
+app.use(express.static('/public'));
+var connectString = 'mongodb+srv://uyennguyen:tuonguyen1@cluster0.2zbh5.mongodb.net/<dbname>?retryWrites=true&w=majority'
+app.use(bodyParser.urlencoded({ extended: true}))
+
+nunjucks.configure(['views/'], { // set folders with templates
+    autoescape: true, 
+    express: app
 });
- 
+
+MongoClient.connect(connectString, {
+    useUnifiedTopology: true
+}, (err, client) => {
+    if (err) return console.error(err)
+    console.log('Connected to Database')
+})
+
+MongoClient.connect(connectString, { useUnifiedTopology: true })
+  .then(client => {
+    console.log('Connected to Database')
+    const db = client.db('Users-db')
+    const quotesCollection = db.collection('quotes')
+
+    app.post('/register.html', (req, res) => {
+        quotesCollection.insertOne(req.body)
+        .then(result => {
+            res.redirect('/')
+        })
+        .catch(error => console.error(error))
+    })
+  })
+
+// app.get( '/', function( req, res ) {
+//     return res.render('homepage.html');
+//     } ) ;
+
+app.get( '/', function( req, res ) {
+    return res.render('register.html');
+    } ) ;
+
+app.post('/quotes', (req, res) => {
+    console.log(req.body)
+})
+
+app.get( '/homepage.html', function( req, res ) {
+    return res.render( 'homepage.html') ;
+    } ) ;
+
+app.get( '/register.html', function( req, res ) {
+    return res.render( 'register.html') ;
+    } ) ;
+
+app.get( '/body.html', function( req, res ) {
+    return res.render( 'body.html') ;
+    } ) ;
+
+app.get( '/eyes.html', function( req, res ) {
+    return res.render( 'eyes.html') ;
+    } ) ;
+
+app.get( '/face.html', function( req, res ) {
+    return res.render( 'face.html') ;
+    } ) ;
+
+app.get( '/lip.html', function( req, res ) {
+    return res.render( 'lip.html') ;
+    } ) ;
+
+app.get( '/body.html', function( req, res ) {
+    return res.render( 'body.html') ;
+    } ) ;
+
+app.get( '/register.html', function( req, res ) {
+    return res.render( 'register.html') ;
+    } ) ;
+
+
+var server = require("http").createServer(app);
+server.listen(1111);
+
+app.use(express.static('public'));
+console.debug('Server listening on port  ' + server.address().port)
