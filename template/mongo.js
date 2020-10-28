@@ -6,7 +6,7 @@ const MongoClient = require('mongodb').MongoClient
 
 var app = express();
 app.use(express.static('/public'));
-var connectString = 'mongodb+srv://uyennguyen:tuonguyen1@cluster0.2zbh5.mongodb.net/<dbname>?retryWrites=true&w=majority'
+var connectString = 'mongodb+srv://uyennguyen:tuonguyen1@cluster0.2zbh5.mongodb.net/<Users-db>?retryWrites=true&w=majority'
 app.use(bodyParser.urlencoded({ extended: true}))
 
 nunjucks.configure(['views/'], { // set folders with templates
@@ -14,23 +14,16 @@ nunjucks.configure(['views/'], { // set folders with templates
     express: app
 });
 
-MongoClient.connect(connectString, {
-    useUnifiedTopology: true
-}, (err, client) => {
-    if (err) return console.error(err)
-    console.log('Connected to Database')
-})
-
 MongoClient.connect(connectString, { useUnifiedTopology: true })
   .then(client => {
     console.log('Connected to Database')
     const db = client.db('Users-db')
     const quotesCollection = db.collection('quotes')
 
-    app.post('/register.html', (req, res) => {
+    app.post('/quotes', (req, res) => {
         quotesCollection.insertOne(req.body)
-        .then(result => {
-            res.redirect('/')
+        .then((req,res) => {
+            res.redirect('/homepage.html')
         })
         .catch(error => console.error(error))
     })
@@ -44,9 +37,9 @@ app.get( '/', function( req, res ) {
     return res.render('register.html');
     } ) ;
 
-app.post('/quotes', (req, res) => {
-    console.log(req.body)
-})
+// app.post('/quotes', (req, res) => {
+//     console.log(req.body)
+// })
 
 app.get( '/homepage.html', function( req, res ) {
     return res.render( 'homepage.html') ;

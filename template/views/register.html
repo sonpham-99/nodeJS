@@ -3,10 +3,11 @@
 {% block title %}Trang chủ{%  endblock %}
 {% block content %}
 <div class="container">
-    <form method="post" action = "/quotes" onsubmit="return check()">
+	<form method="post" action = "/quotes" >
+		<!-- //onsubmit="return check()" -->
 			<table align="center">
 				<tr>
-					<th colspan="2"> ĐĂNG KÝ</Th>
+					<th colspan="2" id="tt"> ĐĂNG KÝ</Th>
 				</TR>
 				<TR>
 					<td>Họ tên:<span class="cl"> *</span> </td>
@@ -49,6 +50,23 @@
     .cl{
         color: red;
     }
+	table{
+		background-color: pink;
+	}
+	#tt{
+		font-size: 30px;
+		font-style: italic;
+
+	}
+	td{
+		font-size: 25px;
+	}
+	button{
+		background-color: deeppink;
+		color: white;
+		border-radius: 4px;
+		font-size: 20px;
+	}
 </style>
 
 <script>
